@@ -2,6 +2,7 @@ class NutritionFacts::CLI
 
   def call
     self.greeting
+    NutritionFacts::FoodScraper.scrape_foods
   end
 
   def greeting
