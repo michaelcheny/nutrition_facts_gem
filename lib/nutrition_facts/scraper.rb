@@ -14,11 +14,20 @@ class FoodScraper
   
   ## scrape the first level of the website for common food name, calories, and serving size
   def self.scrape_foods
-    food = {}
+    food_items = []
     parsed_page = HTTParty.get(STATIC_URL)
-    parsed_page["foods"].each do |food|
-    binding.pry
+    # binding.pry
+    parsed_page["foods"].map do |food|
+      food_items << {
+      :name => food["food_name"],
+      :calories_per_serving => food["nf_calories"],
+      :grams_per_serving => food["serving_weight_grams"]
+      }
+      # binding.pry
+   
     end
+    food_items
+    binding.pry
   end
 
 end
