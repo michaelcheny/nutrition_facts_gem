@@ -1,4 +1,4 @@
-class NutritionFacts::Food
+class Food
 
 
 end
