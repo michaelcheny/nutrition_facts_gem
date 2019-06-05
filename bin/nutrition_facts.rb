@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
-require "../lib/nutrition_facts.rb"
+require_relative "../lib/nutrition_facts.rb"
 
+NutritionFacts::CLI.new.call
