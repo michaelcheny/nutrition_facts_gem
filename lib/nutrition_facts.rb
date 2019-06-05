@@ -1,4 +1,6 @@
-require "nutrition_facts/version"
+
+# require 'nutrition_facts/version'
+require_relative '../config/environment'
 
 module NutritionFacts
   class Error < StandardError; end
