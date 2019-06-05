@@ -1,0 +1,4 @@
+class NutritionFacts::Food
+
+
+end
