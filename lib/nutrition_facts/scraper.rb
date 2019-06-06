@@ -16,18 +16,22 @@ class FoodScraper
   def self.scrape_foods
     food_items = []
     parsed_page = HTTParty.get(STATIC_URL)
-    # binding.pry
+
+    page = 1
+    items_per_page = parsed_page["foods"].count
+    total_items = parsed_page["total"].to_f
+    last_page = (total_items.to_f / items_per_page.to_f).round
+
+    binding.pry
+
     parsed_page["foods"].map do |food|
       food_items << {
       :name => food["food_name"],
       :calories_per_serving => food["nf_calories"],
       :grams_per_serving => food["serving_weight_grams"]
       }
-      # binding.pry
-   
     end
     food_items
-    binding.pry
   end
 
 end
