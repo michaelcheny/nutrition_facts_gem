@@ -45,15 +45,18 @@ class FoodScraper
   def self.scrape_foods
     food_items = []
     parsed_page = HTTParty.get("https://www.nutritionix.com/nixapi/search/en_US")
-    binding.pry
+    # binding.pry
     parsed_page["foods"].map do |food|
+
+      ## get rid of leading and trailing whitespace to use as item url
+      url_string_add = "#{food["food_name"]}".delete("0-9%").gsub(/^[ \t]+|[ \t]+$/, "")
+
       food_items << {
       :name => food["food_name"],
       :calories_per_serving => food["nf_calories"],
-      :grams_per_serving => food["serving_weight_grams"]
+      :grams_per_serving => food["serving_weight_grams"],
+      :url => "https://www.nutritionix.com/food/#{url_string_add}".gsub(" ", "-")
       }
-      # binding.pry
-   
     end
     food_items
     binding.pry
